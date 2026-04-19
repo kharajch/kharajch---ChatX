@@ -1,0 +1,10 @@
+fastapi
+langchain
+langchain-core
+langchain-community
+langchain-ollama
+python-dotenv
+requests
+beautifulsoup4
+uvicorn
+langchain-google-genai

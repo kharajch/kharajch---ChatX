@@ -1,0 +1,216 @@
+.chatBox {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: var(--surface-low);
+  position: relative;
+}
+
+/* Messages Area */
+.messagesArea {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-lg) var(--space-xl);
+}
+
+.messagesList {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding-bottom: var(--space-lg);
+}
+
+/* Welcome State */
+.welcomeState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  padding: var(--space-2xl);
+}
+
+.welcomeIcon {
+  font-size: 3rem;
+  color: var(--text-muted);
+  margin-bottom: var(--space-lg);
+  opacity: 0.5;
+}
+
+.welcomeTitle {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+  letter-spacing: -0.02em;
+}
+
+.welcomeSubtitle {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  margin-bottom: var(--space-2xl);
+}
+
+.suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  justify-content: center;
+  max-width: 500px;
+}
+
+.suggestionChip {
+  padding: var(--space-sm) var(--space-md);
+  background: var(--surface-container);
+  color: var(--on-surface-variant);
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  cursor: pointer;
+  border: 1px solid var(--ghost-border);
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.suggestionChip:hover {
+  background: var(--surface-container-high);
+  color: var(--text-primary);
+  transform: translateY(-1px);
+}
+
+/* Input Area */
+.inputArea {
+  padding: var(--space-md) var(--space-xl) var(--space-md);
+  background: var(--surface-low);
+  position: relative;
+}
+
+.inputArea::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: var(--space-xl);
+  right: var(--space-xl);
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--outline-variant), transparent);
+  opacity: 0.3;
+}
+
+.inputContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-sm);
+  background: var(--surface-container);
+  border-radius: var(--radius-xl);
+  padding: var(--space-sm) var(--space-sm) var(--space-sm) var(--space-lg);
+  border: 1px solid var(--ghost-border);
+  transition: border-color var(--duration-fast) var(--ease-out),
+              box-shadow var(--duration-fast) var(--ease-out);
+}
+
+.inputContainer:focus-within {
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.03),
+              0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.textarea {
+  flex: 1;
+  resize: none;
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--on-surface);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  padding: var(--space-sm) 0;
+  max-height: 150px;
+  font-family: inherit;
+}
+
+.textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.textarea:disabled {
+  opacity: 0.5;
+}
+
+.sendBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: var(--surface-container-high);
+  color: var(--text-muted);
+  cursor: default;
+  transition: all var(--duration-fast) var(--ease-out);
+  border: none;
+}
+
+.sendBtnActive {
+  background: var(--primary);
+  color: var(--on-primary);
+  cursor: pointer;
+}
+
+.sendBtnActive:hover {
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
+}
+
+.sendIcon {
+  font-size: 1.1rem;
+  transform: rotate(45deg);
+}
+
+.disclaimer {
+  text-align: center;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-top: var(--space-sm);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Error Banner */
+.errorBanner {
+  padding: var(--space-md);
+  background: rgba(147, 0, 10, 0.1);
+  border: 1px solid rgba(255, 180, 171, 0.15);
+  border-radius: var(--radius-md);
+  color: var(--error);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .messagesArea {
+    padding: var(--space-md);
+  }
+
+  .inputArea {
+    padding: var(--space-sm) var(--space-md) var(--space-sm);
+  }
+
+  .inputContainer {
+    padding-left: var(--space-md);
+  }
+
+  .suggestions {
+    flex-direction: column;
+    max-width: 100%;
+  }
+  
+  .welcomeTitle {
+    font-size: 1.35rem;
+  }
+}

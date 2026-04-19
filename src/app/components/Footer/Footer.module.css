@@ -1,0 +1,43 @@
+.footer {
+  padding: var(--space-md) var(--space-xl);
+  background: var(--surface-lowest);
+  position: relative;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: var(--space-xl);
+  right: var(--space-xl);
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--outline-variant), transparent);
+  opacity: 0.2;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.brand {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.separator {
+  opacity: 0.3;
+}
+
+.attribution {
+  font-weight: 400;
+}
+
+.highlight {
+  color: var(--on-surface-variant);
+  font-weight: 500;
+}
