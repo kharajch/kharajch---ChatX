@@ -11,7 +11,6 @@ from dotenv import load_dotenv
 import os
 
 from langchain_ollama import ChatOllama
-from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import SystemMessage, HumanMessage, AIMessage
 
 load_dotenv()

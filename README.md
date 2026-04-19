@@ -1,6 +1,6 @@
 # kharajch---ChatX
 
-> A premium AI-powered chat experience built with Next.js, FastAPI, and local Ollama or Google Gemini LLMs.
+> A premium AI-powered chat experience built with Next.js, FastAPI, and local Ollama.
 
 ![ChatX](public/logo.png)
 
@@ -21,8 +21,8 @@
 | Styling  | Vanilla CSS (CSS Modules)           |
 | 3D       | Three.js, React Three Fiber, Drei   |
 | Animation| Framer Motion, GSAP                 |
-| Backend  | FastAPI, LangChain, Ollama, Google Gemini |
-| LLM      | Ollama (e.g. qwen3.5:0.8b) or Google Gemini (e.g. gemini-1.5-pro) |
+| Backend  | FastAPI, LangChain, Ollama |
+| LLM      | Ollama (e.g. qwen3.5:0.8b) |
 
 ## 🚀 Getting Started
 
@@ -30,7 +30,7 @@
 
 - Node.js 18+
 - Python 3.10+
-- Ollama installed locally with desired models (e.g. `qwen3.5:0.8b`) OR Google Gemini API Key
+- Ollama installed locally with desired models (e.g. `qwen3.5:0.8b`)
 
 ### Setup
 
@@ -62,11 +62,6 @@
    # For local Ollama setup:
    OLLAMA_BASE_URL=http://localhost:11434
    OLLAMA_MODEL=qwen3.5:0.8b
-   
-   # Alternatively, for Google Gemini setup:
-   GEMINI_MODEL=gemini-1.5-pro
-   GOOGLE_API_KEY=your_google_api_key
-   ```
 
 5. **Start the backend**
    ```bash
@@ -85,9 +80,6 @@
 
 ```
 kharajch---ChatX/
-├── api/
-│   ├── index.py             # Vercel Serverless entrypoint
-│   └── requirements.txt     # Forward to backend requirements
 ├── backend/
 │   ├── main.py              # FastAPI app + /api/search endpoint
 │   └── requirements.txt     # Python dependencies
@@ -113,8 +105,6 @@ kharajch---ChatX/
 │   ├── page.js               # Main page (hero → chat)
 │   └── page.module.css       # Page layout styles
 ├── .env                      # Environment variables
-├── design.md                 # Design system documentation
-└── spec.md                   # Feature specifications
 ```
 
 ## 🎨 Design System — "Onyx Protocol"
@@ -127,4 +117,4 @@ kharajch---ChatX/
 
 ## 📄 License
 
-MIT © kharajch
+© kharajch
