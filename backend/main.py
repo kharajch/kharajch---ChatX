@@ -27,7 +27,7 @@ app.add_middleware(
 )
 
 # Initialize the LLM
-nvidia_model = os.getenv("NVIDIA_MODEL", "meta/llama-3.1-70b-instruct")
+nvidia_model = os.getenv("NVIDIA_MODEL")
 nvidia_api_key = os.getenv("NVIDIA_API_KEY")
 
 if nvidia_api_key:
