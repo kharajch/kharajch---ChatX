@@ -117,15 +117,13 @@ export function useChat() {
       const currentConv = latestConvs.find(c => c.id === convId)
       const history = currentConv ? [...currentConv.messages, userMessage] : [userMessage]
 
-      const response = await sendMessage(content, history)
-
-      setCurrentThinking(response.thinking)
-
-      // Add assistant message
-      const assistantMessage = {
+      // Add an initial empty assistant message to stream into
+      const assistantMessageId = Date.now().toString()
+      const initialAssistantMessage = {
+        id: assistantMessageId,
         role: 'assistant',
-        content: response.answer,
-        thinking: response.thinking,
+        content: '',
+        thinking: '',
         timestamp: new Date().toISOString(),
       }
 
@@ -133,7 +131,42 @@ export function useChat() {
         if (c.id === convId) {
           return {
             ...c,
-            messages: [...c.messages, assistantMessage],
+            messages: [...c.messages, initialAssistantMessage],
+            updatedAt: new Date().toISOString(),
+          }
+        }
+        return c
+      }))
+
+      const response = await sendMessage(content, history, (chunk, answer) => {
+        setConversations(prev => prev.map(c => {
+          if (c.id === convId) {
+            return {
+              ...c,
+              messages: c.messages.map(msg => 
+                msg.id === assistantMessageId 
+                  ? { ...msg, content: answer }
+                  : msg
+              ),
+              updatedAt: new Date().toISOString(),
+            }
+          }
+          return c
+        }))
+      })
+
+      setCurrentThinking(response.thinking)
+
+      // Ensure final state is set (especially if there's any final thinking output)
+      setConversations(prev => prev.map(c => {
+        if (c.id === convId) {
+          return {
+            ...c,
+            messages: c.messages.map(msg => 
+              msg.id === assistantMessageId 
+                ? { ...msg, content: response.answer, thinking: response.thinking }
+                : msg
+            ),
             updatedAt: new Date().toISOString(),
           }
         }

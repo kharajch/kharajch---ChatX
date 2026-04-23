@@ -68,7 +68,7 @@ async def root():
     return {"status": "ok", "message": "kharajch---ChatX API is running"}
 
 
-@app.post("/search", response_model=SearchResponse)
+@app.post("/search")
 async def search(request: SearchRequest):
     try:
         # Build conversation history
@@ -88,13 +88,16 @@ async def search(request: SearchRequest):
         if not llm:
             raise HTTPException(status_code=503, detail="AI model is not configured (missing API key).")
             
-        response = llm.invoke(messages)
-        content = response.content if hasattr(response, 'content') else str(response)
+        async def stream_response():
+            try:
+                async for chunk in llm.astream(messages):
+                    content = chunk.content if hasattr(chunk, 'content') else str(chunk)
+                    yield content
+            except Exception as e:
+                yield f"\n\n[Error: {str(e)}]"
 
-        return SearchResponse(
-            answer=content,
-            thinking=""
-        )
+        from fastapi.responses import StreamingResponse
+        return StreamingResponse(stream_response(), media_type="text/plain")
 
     except Exception as e:
         raise HTTPException(

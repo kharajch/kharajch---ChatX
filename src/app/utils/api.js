@@ -7,7 +7,7 @@ const isDev = process.env.NODE_ENV === 'development'
  * @param {Array} history - Previous conversation messages
  * @returns {Promise<{answer: string, thinking: string}>}
  */
-export async function sendMessage(message, history = []) {
+export async function sendMessage(message, history = [], onChunk) {
   try {
     const response = await fetch(`${API_BASE_URL}/search`, {
       method: 'POST',
@@ -30,10 +30,22 @@ export async function sendMessage(message, history = []) {
       )
     }
 
-    const data = await response.json()
-    return {
-      answer: data.answer || '',
-      thinking: data.thinking || '',
+    if (onChunk) {
+      const reader = response.body.getReader()
+      const decoder = new TextDecoder()
+      let answer = ''
+
+      while (true) {
+        const { done, value } = await reader.read()
+        if (done) break
+        const chunk = decoder.decode(value, { stream: true })
+        answer += chunk
+        onChunk(chunk, answer)
+      }
+      return { answer, thinking: '' }
+    } else {
+      const text = await response.text()
+      return { answer: text, thinking: '' }
     }
   } catch (error) {
     if (error.name === 'TypeError' && error.message.includes('fetch')) {
