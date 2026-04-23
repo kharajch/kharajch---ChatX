@@ -2,7 +2,7 @@ fastapi
 langchain
 langchain-core
 langchain-community
-langchain-ollama
+langchain-nvidia-ai-endpoints
 python-dotenv
 requests
 beautifulsoup4

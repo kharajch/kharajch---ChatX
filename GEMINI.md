@@ -1,9 +1,9 @@
-# GEMINI.md — kharajch---ChatX
+# NVIDIA.md — kharajch---ChatX
 
 ## Architecture
 - **Frontend**: Next.js 16 App Router (src/app/) with React 19
 - **Backend**: FastAPI at backend/main.py, serves /api/search endpoint (deployed via api/index.py on Vercel)
-- **LLM**: Ollama via LangChain (langchain_ollama)
+- **LLM**: NVIDIA NIM via LangChain (langchain-nvidia-ai-endpoints)
 - **Styling**: Vanilla CSS with CSS Modules (no Tailwind)
 
 ## Key Patterns
@@ -26,4 +26,4 @@ POST /api/search
 ## Running
 - Frontend: npm run dev (port 3000)
 - Backend: uvicorn main:app --reload --port 8000
-- Requires OLLAMA_BASE_URL and OLLAMA_MODEL in .env
+- Requires NVIDIA_API_KEY and NVIDIA_MODEL in .env

@@ -1,12 +1,12 @@
 # kharajch---ChatX
 
-> A premium AI-powered chat experience built with Next.js, FastAPI, and local Ollama.
+> A premium AI-powered chat experience built with Next.js, FastAPI, and NVIDIA NIM.
 
 ![ChatX](public/logo.png)
 
 ## ✨ Features
 
-- **AI Chat Interface** — Intelligent conversations powered by local Ollama or Google Gemini LLMs
+- **AI Chat Interface** — Intelligent conversations powered by NVIDIA NIM (meta/llama-3.1-70b-instruct)
 - **Thinking Scratchpad** — Real-time visualization of AI reasoning
 - **Conversation History** — Persistent chat sessions via localStorage
 - **3D Hero Experience** — Immersive Three.js/React Three Fiber landing page
@@ -21,8 +21,8 @@
 | Styling  | Vanilla CSS (CSS Modules)           |
 | 3D       | Three.js, React Three Fiber, Drei   |
 | Animation| Framer Motion, GSAP                 |
-| Backend  | FastAPI, LangChain, Ollama |
-| LLM      | Ollama (e.g. qwen3.5:0.8b) |
+| Backend  | FastAPI, LangChain, NVIDIA NIM |
+| LLM      | NVIDIA NIM (meta/llama-3.1-70b-instruct) |
 
 ## 🚀 Getting Started
 
@@ -30,7 +30,7 @@
 
 - Node.js 18+
 - Python 3.10+
-- Ollama installed locally with desired models (e.g. `qwen3.5:0.8b`)
+- NVIDIA API Key (from [build.nvidia.com](https://build.nvidia.com/))
 
 ### Setup
 
@@ -59,9 +59,10 @@
    ```bash
    # Create a .env file
    
-   # For local Ollama setup:
-   OLLAMA_BASE_URL=http://localhost:11434
-   OLLAMA_MODEL=qwen3.5:0.8b
+   # For NVIDIA NIM setup:
+   NVIDIA_API_KEY=your-nvapi-key-here
+   NVIDIA_MODEL=meta/llama-3.1-70b-instruct
+   ```
 
 5. **Start the backend**
    ```bash

@@ -10,7 +10,7 @@ from typing import List, Optional
 from dotenv import load_dotenv
 import os
 
-from langchain_ollama import ChatOllama
+from langchain_nvidia_ai_endpoints import ChatNVIDIA
 from langchain_core.messages import SystemMessage, HumanMessage, AIMessage
 
 load_dotenv()
@@ -27,21 +27,17 @@ app.add_middleware(
 )
 
 # Initialize the LLM
-ollama_model = os.getenv("OLLAMA_MODEL")
-ollama_base_url = os.getenv("OLLAMA_BASE_URL")
+nvidia_model = os.getenv("NVIDIA_MODEL", "meta/llama-3.1-70b-instruct")
+nvidia_api_key = os.getenv("NVIDIA_API_KEY")
 
-if ollama_model and ollama_base_url:
-    llm = ChatOllama(
-        model=ollama_model,
-        base_url=ollama_base_url,
-        model_kwargs={
-            "provider": {
-                "allow_fallbacks": True,
-            }
-        }
+if nvidia_api_key:
+    llm = ChatNVIDIA(
+        model=nvidia_model,
+        api_key=nvidia_api_key
     )
-else :
-    raise Exception("Ollama model or base URL not configured")
+else:
+    print("⚠️ WARNING: NVIDIA_API_KEY is not set. Please update your .env file.")
+    llm = None
 
 class MessageItem(BaseModel):
     role: str  # "user" or "assistant"
@@ -89,6 +85,9 @@ async def search(request: SearchRequest):
         messages.append(HumanMessage(content=request.message))
 
         # Direct invocation without structured output for "thinking"
+        if not llm:
+            raise HTTPException(status_code=503, detail="AI model is not configured (missing API key).")
+            
         response = llm.invoke(messages)
         content = response.content if hasattr(response, 'content') else str(response)
 
