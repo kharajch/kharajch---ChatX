@@ -9,7 +9,7 @@ const isDev = process.env.NODE_ENV === 'development'
  */
 export async function sendMessage(message, history = []) {
   try {
-    const response = await fetch(`${API_BASE_URL}/api/search`, {
+    const response = await fetch(`${API_BASE_URL}/search`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -51,7 +51,7 @@ export async function sendMessage(message, history = []) {
  */
 export async function checkHealth() {
   try {
-    const response = await fetch(`${API_BASE_URL}/api/`)
+    const response = await fetch(`${API_BASE_URL}/`)
     return response.ok
   } catch {
     return false
