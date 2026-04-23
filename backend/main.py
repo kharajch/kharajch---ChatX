@@ -63,12 +63,12 @@ When answering questions:
 4. If you don't know something, say so honestly"""
 
 
-@app.get("/api/")
+@app.get("/")
 async def root():
     return {"status": "ok", "message": "kharajch---ChatX API is running"}
 
 
-@app.post("/api/search", response_model=SearchResponse)
+@app.post("/search", response_model=SearchResponse)
 async def search(request: SearchRequest):
     try:
         # Build conversation history
