@@ -1,0 +1,9 @@
+fastapi
+langchain
+langchain-core
+langchain-community
+langchain-nvidia-ai-endpoints
+python-dotenv
+requests
+beautifulsoup4
+uvicorn

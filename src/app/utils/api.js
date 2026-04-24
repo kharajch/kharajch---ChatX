@@ -1,5 +1,5 @@
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'
 const isDev = process.env.NODE_ENV === 'development'
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || (isDev ? 'http://localhost:8000' : '/api')
 
 /**
  * Send a message to the backend /api/search endpoint
