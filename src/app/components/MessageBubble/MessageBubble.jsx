@@ -25,12 +25,15 @@ export default function MessageBubble({ message, index }) {
         <div className={`markdown-content ${styles.content}`}>
           {message.content}
         </div>
-        <span className={styles.timestamp}>
-          {new Date(message.timestamp).toLocaleTimeString([], {
-            hour: '2-digit',
-            minute: '2-digit'
-          })}
-        </span>
+        <div className={styles.bubbleFooter}>
+          {!isUser && !isError && <span className={styles.modelInfo}>NVIDIA NIM</span>}
+          <span className={styles.timestamp}>
+            {new Date(message.timestamp).toLocaleTimeString([], {
+              hour: '2-digit',
+              minute: '2-digit'
+            })}
+          </span>
+        </div>
       </div>
 
       {isUser && (

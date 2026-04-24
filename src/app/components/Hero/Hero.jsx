@@ -61,7 +61,7 @@ export default function Hero({ onStartChat }) {
         </h1>
 
         <p ref={subtitleRef} className={styles.subtitle}>
-          Your AI-Powered Chat Experience
+          Powered by NVIDIA NIM
         </p>
 
         <motion.button

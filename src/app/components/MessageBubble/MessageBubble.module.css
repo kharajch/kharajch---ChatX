@@ -65,12 +65,25 @@
   white-space: pre-wrap;
 }
 
-.timestamp {
-  display: block;
+.bubbleFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin-top: var(--space-xs);
+  gap: var(--space-sm);
+}
+
+.modelInfo {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+
+.timestamp {
   font-size: 0.7rem;
   color: var(--text-muted);
-  text-align: right;
 }
 
 @media (max-width: 768px) {

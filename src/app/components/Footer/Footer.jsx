@@ -7,7 +7,7 @@ export default function Footer() {
         <span className={styles.brand}>kharajch---ChatX</span>
         <span className={styles.separator}>·</span>
         <span className={styles.attribution}>
-          Powered by <span className={styles.highlight}>Ollama</span>
+          Powered by <span className={styles.highlight}>NVIDIA NIM</span>
         </span>
       </div>
     </footer>
