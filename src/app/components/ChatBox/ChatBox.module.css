@@ -13,6 +13,7 @@
   flex: 1;
   overflow-y: auto;
   padding: var(--space-lg) var(--space-xl);
+  -webkit-overflow-scrolling: touch;
 }
 
 .messagesList {
@@ -73,6 +74,7 @@
   cursor: pointer;
   border: 1px solid var(--ghost-border);
   transition: all var(--duration-fast) var(--ease-out);
+  -webkit-tap-highlight-color: transparent;
 }
 
 .suggestionChip:hover {
@@ -81,11 +83,17 @@
   transform: translateY(-1px);
 }
 
+.suggestionChip:active {
+  transform: translateY(0);
+  background: var(--surface-container-highest);
+}
+
 /* Input Area */
 .inputArea {
   padding: var(--space-md) var(--space-xl) var(--space-md);
   background: var(--surface-low);
   position: relative;
+  flex-shrink: 0;
 }
 
 .inputArea::before {
@@ -131,6 +139,8 @@
   padding: var(--space-sm) 0;
   max-height: 150px;
   font-family: inherit;
+  /* Prevent iOS zoom on focus */
+  font-size: max(16px, 0.95rem);
 }
 
 .textarea::placeholder {
@@ -154,6 +164,7 @@
   cursor: default;
   transition: all var(--duration-fast) var(--ease-out);
   border: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .sendBtnActive {
@@ -192,7 +203,22 @@
   text-align: center;
 }
 
-/* Responsive */
+/* ========================
+   Responsive: Tablet (≤1024px)
+   ======================== */
+@media (max-width: 1024px) {
+  .messagesArea {
+    padding: var(--space-md) var(--space-lg);
+  }
+
+  .inputArea {
+    padding: var(--space-md) var(--space-lg) var(--space-md);
+  }
+}
+
+/* ========================
+   Responsive: Mobile (≤768px)
+   ======================== */
 @media (max-width: 768px) {
   .messagesArea {
     padding: var(--space-md);
@@ -200,18 +226,91 @@
 
   .inputArea {
     padding: var(--space-sm) var(--space-md) var(--space-sm);
+    /* Extra bottom padding for safe area (iPhones with home indicator) */
+    padding-bottom: calc(var(--space-sm) + env(safe-area-inset-bottom, 0px));
+  }
+
+  .inputArea::before {
+    left: var(--space-md);
+    right: var(--space-md);
   }
 
   .inputContainer {
     padding-left: var(--space-md);
+    border-radius: var(--radius-lg);
   }
 
   .suggestions {
     flex-direction: column;
     max-width: 100%;
+    align-items: stretch;
   }
-  
+
+  .suggestionChip {
+    text-align: center;
+    padding: var(--space-sm) var(--space-md);
+  }
+
+  .welcomeState {
+    padding: var(--space-lg);
+  }
+
+  .welcomeIcon {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-md);
+  }
+
   .welcomeTitle {
     font-size: 1.35rem;
+  }
+
+  .welcomeSubtitle {
+    font-size: 0.9rem;
+    margin-bottom: var(--space-lg);
+  }
+
+  .disclaimer {
+    font-size: 0.65rem;
+  }
+}
+
+/* ========================
+   Responsive: Small Mobile (≤480px)
+   ======================== */
+@media (max-width: 480px) {
+  .messagesArea {
+    padding: var(--space-sm);
+  }
+
+  .inputArea {
+    padding: var(--space-xs) var(--space-sm) var(--space-xs);
+    padding-bottom: calc(var(--space-xs) + env(safe-area-inset-bottom, 0px));
+  }
+
+  .inputContainer {
+    padding: var(--space-xs) var(--space-xs) var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-md);
+  }
+
+  .textarea {
+    font-size: 16px; /* Prevent zoom on iOS */
+  }
+
+  .sendBtn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .welcomeTitle {
+    font-size: 1.2rem;
+  }
+
+  .welcomeSubtitle {
+    font-size: 0.85rem;
+  }
+
+  .suggestionChip {
+    font-size: 0.8rem;
+    padding: var(--space-xs) var(--space-sm);
   }
 }

@@ -7,6 +7,14 @@ const inter = Inter({
   variable: '--font-inter',
 })
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  viewportFit: 'cover',
+}
+
 export const metadata = {
   metadataBase: new URL('https://kharajch-chatx.vercel.app'),
   title: "kharajch---ChatX | AI-Powered Chat Experience",

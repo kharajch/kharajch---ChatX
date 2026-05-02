@@ -16,6 +16,7 @@
   background: none;
   border: none;
   color: var(--thinking-accent);
+  -webkit-tap-highlight-color: transparent;
 }
 
 .headerLeft {
@@ -62,6 +63,7 @@
   margin: 0;
   max-height: 300px;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Loading State */
@@ -98,4 +100,45 @@
 
 .loadingDots span:nth-child(3) {
   animation-delay: 0.4s;
+}
+
+/* ========================
+   Responsive: Mobile (≤768px)
+   ======================== */
+@media (max-width: 768px) {
+  .scratchpad {
+    border-radius: var(--radius-md);
+  }
+
+  .header {
+    padding: var(--space-sm) var(--space-md);
+  }
+
+  .content {
+    padding: 0 var(--space-sm) var(--space-sm);
+  }
+
+  .thinkingText {
+    font-size: 0.75rem;
+    max-height: 200px;
+  }
+}
+
+/* ========================
+   Responsive: Small Mobile (≤480px)
+   ======================== */
+@media (max-width: 480px) {
+  .headerTitle {
+    font-size: 0.78rem;
+  }
+
+  .thinkingText {
+    font-size: 0.7rem;
+    line-height: 1.6;
+    max-height: 150px;
+  }
+
+  .loadingState p {
+    font-size: 0.75rem;
+  }
 }

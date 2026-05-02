@@ -2,6 +2,7 @@
   padding: var(--space-md) var(--space-xl);
   background: var(--surface-lowest);
   position: relative;
+  flex-shrink: 0;
 }
 
 .footer::before {
@@ -22,6 +23,7 @@
   gap: var(--space-sm);
   font-size: 0.75rem;
   color: var(--text-muted);
+  flex-wrap: wrap;
 }
 
 .brand {
@@ -40,4 +42,39 @@
 .highlight {
   color: var(--on-surface-variant);
   font-weight: 500;
+}
+
+/* ========================
+   Responsive: Mobile (≤768px)
+   ======================== */
+@media (max-width: 768px) {
+  .footer {
+    padding: var(--space-sm) var(--space-md);
+    /* Extra bottom for safe area */
+    padding-bottom: calc(var(--space-sm) + env(safe-area-inset-bottom, 0px));
+  }
+
+  .footer::before {
+    left: var(--space-md);
+    right: var(--space-md);
+  }
+
+  .content {
+    font-size: 0.7rem;
+    gap: var(--space-xs);
+  }
+}
+
+/* ========================
+   Responsive: Small Mobile (≤480px)
+   ======================== */
+@media (max-width: 480px) {
+  .footer {
+    padding: var(--space-xs) var(--space-sm);
+    padding-bottom: calc(var(--space-xs) + env(safe-area-inset-bottom, 0px));
+  }
+
+  .content {
+    font-size: 0.65rem;
+  }
 }

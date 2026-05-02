@@ -1,6 +1,7 @@
 .hero {
   position: relative;
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -24,6 +25,7 @@
   text-align: center;
   padding: var(--space-xl);
   max-width: 700px;
+  width: 100%;
 }
 
 /* Logo */
@@ -101,10 +103,15 @@
   cursor: pointer;
   transition: box-shadow var(--duration-normal) var(--ease-out);
   border: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .ctaButton:hover {
   box-shadow: 0 0 30px rgba(255, 255, 255, 0.15), 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.ctaButton:active {
+  transform: scale(0.97);
 }
 
 .ctaText {
@@ -135,7 +142,19 @@
   animation: pulse 2s ease-in-out infinite;
 }
 
-/* Responsive */
+/* ========================
+   Responsive: Tablet (≤1024px)
+   ======================== */
+@media (max-width: 1024px) {
+  .content {
+    padding: var(--space-lg);
+    max-width: 600px;
+  }
+}
+
+/* ========================
+   Responsive: Mobile (≤768px)
+   ======================== */
 @media (max-width: 768px) {
   .content {
     padding: var(--space-lg);
@@ -144,5 +163,72 @@
   .logo {
     width: 80px;
     height: 80px;
+  }
+
+  .logoGlow {
+    inset: -12px;
+  }
+
+  .logoContainer {
+    margin-bottom: var(--space-lg);
+  }
+
+  .subtitle {
+    margin-bottom: var(--space-xl);
+  }
+
+  .ctaButton {
+    padding: var(--space-sm) var(--space-lg);
+    font-size: 0.95rem;
+  }
+
+  .scrollIndicator {
+    bottom: var(--space-lg);
+  }
+
+  .scrollLine {
+    height: 30px;
+  }
+}
+
+/* ========================
+   Responsive: Small Mobile (≤480px)
+   ======================== */
+@media (max-width: 480px) {
+  .content {
+    padding: var(--space-md);
+  }
+
+  .logo {
+    width: 64px;
+    height: 64px;
+  }
+
+  .logoGlow {
+    inset: -8px;
+    filter: blur(12px);
+  }
+
+  .logoContainer {
+    margin-bottom: var(--space-md);
+  }
+
+  .title {
+    font-size: clamp(1.5rem, 8vw, 2.5rem);
+  }
+
+  .titleAccent {
+    font-size: 0.6em;
+  }
+
+  .subtitle {
+    margin-bottom: var(--space-lg);
+  }
+
+  .ctaButton {
+    padding: var(--space-sm) var(--space-lg);
+    font-size: 0.9rem;
+    width: 100%;
+    justify-content: center;
   }
 }

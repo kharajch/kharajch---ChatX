@@ -22,6 +22,10 @@
   color: var(--on-surface);
   font-size: 0.85rem;
   transition: all var(--duration-fast) var(--ease-out);
+  /* Prevent iOS zoom */
+  font-size: max(16px, 0.85rem);
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .searchInput::placeholder {
@@ -32,4 +36,17 @@
   background: var(--surface-container);
   border-color: var(--ghost-border);
   box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.03);
+}
+
+/* ========================
+   Responsive: Small Mobile (≤480px)
+   ======================== */
+@media (max-width: 480px) {
+  .searchContainer {
+    padding: 0 var(--space-sm) var(--space-sm);
+  }
+
+  .searchIcon {
+    left: calc(var(--space-sm) + var(--space-md));
+  }
 }

@@ -40,6 +40,8 @@
   border-radius: var(--radius-lg);
   position: relative;
   line-height: 1.6;
+  min-width: 0;
+  overflow-wrap: break-word;
 }
 
 .bubbleRow.user .bubble {
@@ -86,9 +88,13 @@
   color: var(--text-muted);
 }
 
+/* ========================
+   Responsive: Mobile (≤768px)
+   ======================== */
 @media (max-width: 768px) {
   .bubbleRow {
-    max-width: 95%;
+    max-width: 92%;
+    gap: var(--space-sm);
   }
 
   .avatar {
@@ -99,5 +105,53 @@
 
   .bubble {
     padding: var(--space-sm) var(--space-md);
+  }
+
+  .content {
+    font-size: 0.875rem;
+  }
+}
+
+/* ========================
+   Responsive: Small Mobile (≤480px)
+   ======================== */
+@media (max-width: 480px) {
+  .bubbleRow {
+    max-width: 98%;
+    gap: var(--space-xs);
+  }
+
+  .avatar {
+    width: 24px;
+    height: 24px;
+    font-size: 0.75rem;
+    border-radius: var(--radius-sm);
+    margin-top: 2px;
+  }
+
+  .bubble {
+    padding: var(--space-sm);
+    border-radius: var(--radius-md);
+  }
+
+  .bubbleRow.user .bubble {
+    border-bottom-right-radius: var(--radius-xs, 4px);
+  }
+
+  .bubbleRow.assistant .bubble {
+    border-bottom-left-radius: var(--radius-xs, 4px);
+  }
+
+  .content {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  .modelInfo {
+    font-size: 0.6rem;
+  }
+
+  .timestamp {
+    font-size: 0.6rem;
   }
 }
