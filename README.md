@@ -1,17 +1,17 @@
 # kharajch---ChatX
 
-> A premium AI-powered chat experience built with Next.js, FastAPI, and NVIDIA NIM.
+> A premium AI-powered chat experience built with Next.js 16, FastAPI, and NVIDIA NIM.
 
 ![ChatX](public/logo.png)
 
 ## ✨ Features
 
-- **AI Chat Interface** — Intelligent conversations powered by NVIDIA NIM (meta/llama-3.1-70b-instruct)
-- **Thinking Scratchpad** — Real-time visualization of AI reasoning
-- **Conversation History** — Persistent chat sessions via localStorage
-- **3D Hero Experience** — Immersive Three.js/React Three Fiber landing page
-- **Ethereal Monolith Design** — Premium dark theme with glassmorphism and tonal layering
-- **Responsive Layout** — Full desktop and mobile support
+- **AI Chat Interface** — Intelligent conversations powered by NVIDIA NIM (`meta/llama-3.1-70b-instruct`)
+- **Real-time Streaming** — Experience instant responses with low-latency backend streaming
+- **Onyx Protocol Design** — A custom "Ethereal Monolith" theme featuring glassmorphism and tonal layering
+- **3D Immersive Landing** — Interactive Three.js/React Three Fiber background for a premium feel
+- **Conversation History** — Local persistence of chat sessions with search functionality
+- **Responsive Experience** — Fully optimized for desktop and mobile devices
 
 ## 🛠 Tech Stack
 
@@ -21,8 +21,8 @@
 | Styling  | Vanilla CSS (CSS Modules)           |
 | 3D       | Three.js, React Three Fiber, Drei   |
 | Animation| Framer Motion, GSAP                 |
-| Backend  | FastAPI, LangChain, NVIDIA NIM |
-| LLM      | NVIDIA NIM (meta/llama-3.1-70b-instruct) |
+| Backend  | FastAPI, LangChain, NVIDIA NIM      |
+| LLM      | NVIDIA NIM (`meta/llama-3.1-70b-instruct`) |
 
 ## 🚀 Getting Started
 
@@ -56,22 +56,21 @@
    ```
 
 4. **Configure environment variables**
-   ```bash
-   # Create a .env file
-   
-   # For NVIDIA NIM setup:
+   Create a `.env` file in the root:
+   ```env
    NVIDIA_API_KEY=your-nvapi-key-here
    NVIDIA_MODEL=meta/llama-3.1-70b-instruct
    ```
 
 5. **Start the backend**
    ```bash
-   cd backend
-   uvicorn main:app --reload --port 8000
+   # In terminal 1
+   uvicorn backend.main:app --reload --port 8000
    ```
 
-6. **Start the frontend** (in a new terminal)
+6. **Start the frontend**
    ```bash
+   # In terminal 2
    npm run dev
    ```
 
@@ -81,38 +80,40 @@
 
 ```
 kharajch---ChatX/
+├── api/
+│   └── index.py             # Vercel Serverless Function entry point
 ├── backend/
-│   ├── main.py              # FastAPI app + /api/search endpoint
+│   ├── main.py              # FastAPI backend for local development
 │   └── requirements.txt     # Python dependencies
-├── public/
-│   └── logo.png             # ChatX logo
 ├── src/app/
-│   ├── components/
+│   ├── components/          # React components
 │   │   ├── Scene3D/         # Three.js 3D background
 │   │   ├── Hero/            # Landing page hero section
 │   │   ├── ChatBox/         # Main chat interface
 │   │   ├── Sidebar/         # Conversation history sidebar
 │   │   ├── MessageBubble/   # Individual chat messages
-│   │   ├── ThinkingScratchpad/ # AI thinking visualization
+│   │   ├── ThinkingScratchpad/ # AI thinking visualization (UI component)
 │   │   ├── SearchBar/       # Conversation search
 │   │   └── Footer/          # App footer
-│   ├── hooks/
+│   ├── hooks/               # Custom React hooks
 │   │   ├── useChat.js       # Chat logic & state management
 │   │   └── useLocalStorage.js # Persistent storage hook
 │   ├── utils/
-│   │   └── api.js           # Backend API client
-│   ├── globals.css           # Design tokens & global styles
-│   ├── layout.js             # Root layout
-│   ├── page.js               # Main page (hero → chat)
-│   └── page.module.css       # Page layout styles
-├── .env                      # Environment variables
+│   │   └── api.js           # Backend API client (Streaming)
+│   ├── globals.css          # Design tokens & "Onyx Protocol" variables
+│   ├── layout.js            # Root layout (Metadata & Styles)
+│   ├── page.js              # Main page entry (Hero & Chat transitions)
+│   └── page.module.css      # Page layout styles
+├── public/                  # Static assets (logos, icons)
+├── .env                     # Environment variables (Git-ignored)
+└── vercel.json              # Vercel deployment configuration
 ```
 
 ## 🎨 Design System — "Onyx Protocol"
 
 - **Theme**: Ethereal Monolith (black & white, dark mode only)
-- **Typography**: Inter (variable), JetBrains Mono (code)
-- **Colors**: Tonal layering from `#0a0a0a` to `#353534`
+- **Typography**: Inter (Variable), JetBrains Mono (Code)
+- **Colors**: Tonal layering from deep charcoal to bright accents
 - **Effects**: Glassmorphism, ghost borders, ambient shadows
 - **Animations**: Framer Motion + GSAP micro-interactions
 

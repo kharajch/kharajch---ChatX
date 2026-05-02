@@ -5,5 +5,15 @@ This version has breaking changes — APIs, conventions, and file structure may 
 <!-- END:nextjs-agent-rules -->
 
 # Backend Context
-The backend is a FastAPI + LangChain + NVIDIA NIM (meta/llama-3.1-70b-instruct) Python app. Always rely on NVIDIA NIM integration for the API endpoint.
-The API endpoints are prefixed with `/api/` (e.g., `/api/search`) to support automatic Vercel Serverless Function deployment via `api/index.py`.
+The backend is a FastAPI + LangChain + NVIDIA NIM Python app. 
+- API endpoints are prefixed with `/api/` (e.g., `/api/search`).
+- Vercel deployment uses `api/index.py`.
+- Local development uses `backend/main.py`.
+
+# Design System: Onyx Protocol
+Always adhere to the "Onyx Protocol" aesthetic:
+- **Theme**: Premium Dark Mode, Monochromatic.
+- **Borders**: No solid borders. Use `ghost-border` or `glass-border` CSS variables.
+- **Typography**: Inter for UI, JetBrains Mono for code.
+- **Animations**: Use Framer Motion and GSAP for micro-interactions.
+- **Interactivity**: All components must be Client Components ('use client').
