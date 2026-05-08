@@ -1,6 +1,6 @@
 """
 kharajch---ChatX Backend
-FastAPI + LangChain + OpenRouter
+FastAPI + LangChain + NVIDIA NIM
 """
 
 from fastapi import FastAPI, HTTPException
